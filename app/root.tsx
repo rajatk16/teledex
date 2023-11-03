@@ -2,8 +2,14 @@ import type { LinksFunction } from '@remix-run/node';
 import { cssBundleHref } from '@remix-run/css-bundle';
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 
+import tailwindStyleSheet from '~/tailwind.css';
+
 export const links: LinksFunction = () => [
-  ...( cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  {
+    rel: 'stylesheet',
+    href: tailwindStyleSheet
+  }
 ]
 
 export default () => {
@@ -16,7 +22,7 @@ export default () => {
         <Links />
       </head>
       <body>
-        <h1>Hello Rajat!</h1>
+        <h1 className='text-3xl font-bold underline'>Hello Rajat!</h1>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
